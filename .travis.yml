@@ -1,0 +1,14 @@
+language: c
+
+compile:
+  - clang
+  - gcc
+
+before_script:
+  cd c
+
+script:
+  make
+
+after_script:
+  cd ../

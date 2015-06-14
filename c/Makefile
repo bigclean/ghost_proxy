@@ -9,16 +9,27 @@ RM     = rm
 HIGH  := \033[7m
 LIGHT := \033[0m
 
-all:
+.PHONY: all server client
+
+all: server client
+
+server:
 	@echo "------------------------------------------------------------"
-	@echo -e "\t$(HIGH) Building... $(LIGHT)"
-	$(CC) ghost.c common.c -o ghost
+	@echo -e "\t$(HIGH) Server Building... $(LIGHT)"
+	$(CC) server/ghosted.c server/common.c -o ghosted
+	@echo "------------------------------------------------------------"
+
+client:
+	@echo "------------------------------------------------------------"
+	@echo -e "\t$(HIGH) Client Building... $(LIGHT)"
+	$(CC) client/ghost.c client/common.c -o ghost
 	@echo "------------------------------------------------------------"
 
 clean:
 	@echo "------------------------------------------------------------"
 	@echo -e "\t$(HIGH) CLeaning... $(LIGHT)"
 	$(RM) ghost
+	$(RM) ghosted
 	@echo "------------------------------------------------------------"
 
 help:
